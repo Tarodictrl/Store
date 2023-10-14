@@ -19,11 +19,11 @@ $products = $product_db->get_products();
     <title>Магазин</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-</head>
+</head> 
 <body>
     <header class="d-flex justify-content-center py-3 bg-dark">
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Домой</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Товары</a></li>
         <?php if(isset($_SESSION['userid'])) : ?>
             <li class="nav-item"><a href="#" class="nav-link">Корзина</a></li>
             <li class="nav-item"><a href="templates/account.php" class="nav-link">Личный кабинет</a></li>
