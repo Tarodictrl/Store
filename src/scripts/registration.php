@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($error) ) {
         $id = $user_db->registration($email, $hash_password, $fio, $bdate);
         $_SESSION["userid"] = $id;
+        $_SESSION["email"] = $email;
     }
 } else {
     $error .= "Неверный метод запроса.";
