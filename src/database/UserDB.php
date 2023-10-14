@@ -23,7 +23,18 @@ class UserDB
         }
         return -1;
     }
-    
+
+    public function update($data, $email)
+    {
+        $setValues = '';
+        foreach ($data as $key => $value) {
+            $setValues .= "$key = :$key, ";
+        }
+        $setValues = rtrim($setValues, ', ');
+        $sql = "UPDATE users SET $setValues WHERE email='$email'";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($data);
+    }
 
     public function registration($email, $password, $fio, $bdate)
     {
