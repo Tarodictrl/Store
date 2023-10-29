@@ -2,7 +2,7 @@
 
 namespace Store\User;
 
-class UserDB
+class UserCRUD
 {
     private $pdo;
     

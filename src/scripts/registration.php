@@ -3,7 +3,7 @@
 namespace Registration;
 
 include "../config/DBConnector.php";
-include "../database/UserDB.php";
+include "../database/UserCRUD.php";
 
 session_start();
 
@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password_confirm = $_POST['password-confirm'];
     $bdate = $_POST['bdate'];
     $pdo = \Store\Connection\Connection::get()->connect();
-    $user_db = new \Store\User\UserDB($pdo);
-    if ($user_db->get_user($email) != -1)
+    $user_crud = new \Store\User\UserCRUD($pdo);
+    if ($user_crud->get_user($email) != -1)
     {
         $error .= 'Пользователь с такой почтой уже зарегистрирован!';
     }
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error .= 'Пароли не совпадают.';
     }
     if (empty($error) ) {
-        $id = $user_db->registration($email, $hash_password, $fio, $bdate);
+        $id = $user_crud->registration($email, $hash_password, $fio, $bdate);
         $_SESSION["userid"] = $id;
         $_SESSION["email"] = $email;
     }

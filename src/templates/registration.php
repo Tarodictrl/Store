@@ -43,12 +43,21 @@
                 </div>
             </div>
         </section>
+        <section>
+            <div class="container mt-5">
+                <div class="card d-flex align-items-center justify-content-center h-100">
+                    <div class="card-body h-100">
+                        <a href="auth.php" class="text-white btn btn-success">Войти</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <footer class="bg-darktext-center text-lg-start">
+    <footer class="bg-dark text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2); margin-top: 20px;">
             © 2023 Copyright:
-            <a class="text-white" href="https://github.com/Tarodictrl">Daniil Detter</a>
+            <a href="https://github.com/Tarodictrl">Daniil Detter</a>
         </div>
         <!-- Copyright -->
     </footer>

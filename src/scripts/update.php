@@ -3,7 +3,7 @@
 namespace Registration;
 
 include "../config/DBConnector.php";
-include "../database/UserDB.php";
+include "../database/UserCRUD.php";
 
 session_start();
 
@@ -11,7 +11,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo = \Store\Connection\Connection::get()->connect();
-    $user_db = new \Store\User\UserDB($pdo);
+    $user_crud = new \Store\User\UserCRUD($pdo);
     $uploadDirectory = '../assets/img/users/';
     $email = $_SESSION["email"];
     $data = $_POST;
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (empty($error))
     {
-        $user_db->update($data, $email);
+        $user_crud->update($data, $email);
     }
 }
 else {
