@@ -2,7 +2,7 @@
 session_start();
 
 include "../config/DBConnector.php";
-include "../database/UserDB.php";
+include "../database/UserCRUD.php";
 
 if(!isset($_SESSION['userid']))
 {
@@ -10,8 +10,8 @@ if(!isset($_SESSION['userid']))
     exit;
 }
 $pdo = \Store\Connection\Connection::get()->connect();
-$user_db = new \Store\User\UserDB($pdo);
-$user = $user_db->get_user($_SESSION["email"]);
+$user_crud = new \Store\User\UserCRUD($pdo);
+$user = $user_crud->get_user($_SESSION["email"]);
 
 ?>
 
@@ -67,7 +67,15 @@ $user = $user_db->get_user($_SESSION["email"]);
                                     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="<?php echo($user["email"]) ?>" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Дата рождения</label>
+                                    <label>Телефон</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo($user["phone"]) ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Адрес</label>
+                                    <input class="form-control" id="address" name="address" value="<?php echo($user["address"]) ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Дата рождения</label>
                                     <input type="date" class="form-control" id="bdate" name="bdate" value="<?php echo($user["bdate"]) ?>">
                                 </div>
                                 <div id="error-container"></div>
@@ -85,7 +93,7 @@ $user = $user_db->get_user($_SESSION["email"]);
         <!-- Copyright -->
         <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2); margin-top: 20px;">
             © 2023 Copyright:
-            <a class="text-white" href="https://github.com/Tarodictrl">Daniil Detter</a>
+            <a href="https://github.com/Tarodictrl">Daniil Detter</a>
         </div>
         <!-- Copyright -->
     </footer>

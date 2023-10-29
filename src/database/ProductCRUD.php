@@ -2,7 +2,7 @@
 
 namespace Store\Product;
 
-class ProductDB
+class ProductCRUD
 {
     private $pdo;
     
@@ -11,9 +11,9 @@ class ProductDB
         $this->pdo = $pdo;
     }
 
-    public function get_products()
+    public function get_products($category)
     {
-        $sql = 'SELECT * FROM product';
+        $sql = "SELECT * FROM product where category=$category";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
